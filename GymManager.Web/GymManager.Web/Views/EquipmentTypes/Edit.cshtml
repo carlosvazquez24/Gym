@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Head {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.theme.min.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+
+
+}
+
+@model GymManager.Core.EquipmentTypes.EquipmentType;
+
+<div class="container">
+
+    <div class="row">
+        <h5 class="mt-2 col-2"> Edit Equipment  </h5>
+
+        <div class="col-10">
+            <a asp-action="Index" class="btn btn-outline-info float-end mt-2">  Back </a>
+
+        </div>
+
+    </div>
+
+    <form asp-action="Edit">
+
+        <input type="hidden" asp-for="Id" />
+
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"> Name </label>
+            <input type="text" class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"> </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Amount" class="form-label">Amount </label>
+            <input type="number" class="form-control" asp-for="Amount" />
+            <span asp-validation-for="Amount" class="text-danger"> </span>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-3">
+            Submit
+        </button>
+
+
+    </form>
+
+
+</div>

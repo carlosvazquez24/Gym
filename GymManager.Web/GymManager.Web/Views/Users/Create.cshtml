@@ -1,0 +1,90 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+@model GymManager.Web.Models.UserViewModel;
+
+@section Head {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.theme.min.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+
+    <script src="~/Views/Users/Create.js"></script>
+
+
+    <style>
+        .error{
+            color: #dc3545 !important;
+        }
+
+    </style>
+
+}
+
+<div class="container">
+
+    <div class="row">
+        <h5 class="mt-2 col-8">   Create User  </h5>
+
+        <div class="col-4">
+            <a asp-action="Index" class="btn btn-outline-info float-end mt-2">  Back </a>
+
+        </div>
+
+    </div>
+    <form asp-action="Create">
+
+        <div class="mb-3">
+            <label asp-for="UserName" class="form-label">Full Name </label>
+            <input type="email" class="form-control" asp-for="UserName" />
+            <span asp-validation-for="UserName" class="text-danger"> </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PhoneNumber" class="form-label">Phone number </label>
+            <input type="tel" class="form-control" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"> </span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Password" asp-for="Password">
+            <span asp-validation-for="Password" class="text-danger"> </span>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                   data-val="true"
+                   data-val-required="Confirm Password field is required." maxlength="100"
+                   data-val-confirmpassword="Password missmatch."/>
+            <span class="text-danger field-validation-valid" data-valmsg-for="confirm_password" data-valmsg-replace="true"></span>
+            
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-3">
+            Submit
+        </button>
+
+
+    </form>
+
+
+</div>

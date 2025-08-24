@@ -1,0 +1,111 @@
+﻿
+@{
+}
+@model List<GymManager.Core.Members.Member>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col" class="desktop"> BirthDay</th>
+            <th scope="col" class="desktop"> Expiration Date</th>
+            <th scope="col" class="desktop">Email</th>
+            <th scope="col" class="desktop"> Edit </th>
+            <th scope="col" class="desktop"> Delete </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var member in Model)
+        {
+        <tr>
+            <th>   @member.Name     </th>
+            <td>   @member.LastName     </td>
+            <td class="desktop">  @member.BirthDay.ToShortDateString()     </td>
+            <td class="desktop">    @member.MembershipExpirationDate      </td>
+            <td class="desktop">   @member.Email    </td>
+
+            <td class="mobile" >
+
+
+                    <div class="dropdown">
+
+
+                        <svg class="icons infoIcon" data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                        </svg>
+
+                    
+                        <ul class="dropdown-menu infoContainer">
+
+                            <li> <h6 class="dropdown-header"> BirthDay  </h6>  </li>
+                            <li> <span> @member.BirthDay.ToString("dd-mm-yyyy") </span> </li>
+
+                            <li> <h6 class="dropdown-header"> Email  </h6>  </li>
+                            <li> <span> @member.Email </span> </li>
+
+                        </ul>
+                    </div>
+            </td>
+
+
+
+            <td class="mobile"> 
+                <div class="dropdown">
+
+                    <div data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg class="icons"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                        </svg>
+
+                    </div>
+
+
+
+                    <ul class="dropdown-menu">
+                        <li><a asp-action="Edit" asp-route-memberId="@member.Id" class="dropdown-item"> Edit </a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#@member.Id"> Delete </a> </li>
+                    </ul>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="@member.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Deletion confirmation </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        Are you sure you want to delete @member.Name ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                     <a asp-action="Delete" asp-route-memberId="@member.Id" class="btn btn-danger"> Delete </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                
+            </td>
+            <td class="desktop"> <a asp-action="Edit" asp-route-memberId="@member.Id" class="btn btn-outline-info"> Edit </a> </td>
+            <td class="desktop"> <a asp-action="Delete" asp-route-memberId="@member.Id" class="btn btn-outline-danger"> Delete </a> </td>
+
+
+
+        </tr>  
+        }
+
+    </tbody>
+</table>
+
+
+

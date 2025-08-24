@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model GymManager.Web.Models.MemberViewModel;
+
+@section Head {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.theme.min.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/Views/Members/Create.js"></script>
+
+
+}
+
+
+<div class="container">
+
+
+
+    <form asp-action="Edit">
+
+        <div class="row">
+            <div class ="col-4 mt-2">
+                <h5>Edit Member</h5>
+
+            </div>
+
+            <div class="col-8 ">
+                <a asp-action="Index" class="btn btn-outline-info float-end mt-2">  Back </a>
+
+            </div>
+
+        </div>
+
+
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">First Name </label>
+            <input type="text" class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger">  </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="LastName" class="form-label">Last Name </label>
+            <input type="text" class="form-control" asp-for="LastName" />
+            <span asp-validation-for="Name" class="text-danger">  </span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BirthDay" class="form-label">Date of Birth </label>
+            <input type="datetime" class="form-control" asp-for="BirthDay" />
+            <span asp-validation-for="Name" class="text-danger">  </span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CityId" class="form-label">City </label>
+            <br> 
+            <select class="form-control" asp-for="CityId">
+                @foreach (var city in Model.Cities)
+                {
+                    <option value="@city.Id"> @city.Name  </option>
+                }
+            </select>
+            <span asp-validation-for="Name" class="text-danger">  </span>
+
+        </div>
+
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="Enter email" asp-for="Email">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" asp-for="AllowNewsletter" />
+            <label asp-for="AllowNewsletter" class="form-check-label" for="exampleCheck1"> Suscribe to our newsletter</label>
+            <span asp-validation-for="Name" class="text-danger">  </span>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-3">
+            Submit
+        </button>
+
+
+    </form>
+
+
+</div>
+

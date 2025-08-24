@@ -1,0 +1,129 @@
+﻿
+@model GymManager.Web.Models.MembershipRenewalListModel;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.theme.min.css" rel="stylesheet" />
+
+    <style>
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+
+}
+
+
+
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <form asp-controller="MembershipRenewal" asp-action="Index" class="d-flex browser" role="search">
+
+            <div class="col-9">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="buscar">
+
+            </div>
+
+            <div class="col-3">
+                <button class="btn btn-outline-success btnBrowser" style="margin-left: 5px;" type="submit" value="Buscar">Search</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="row">
+        <h5 class="mt-2 col-8">   Renew Membership  </h5>
+
+        <div class="col-4">
+            <a asp-action="Index" class="btn btn-outline-info float-end mt-2">  Refresh
+                </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-wrapper" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-small"> Member Name</th>
+                    <th scope="col" class="col-small">Member Last Name</th>
+                    <th scope="col" class="col-small"> Membership ID </th>
+                    <th scope="col" class="col-small">   Membership Name </th>
+                    <th scope="col" class="col-small"> Membership Duration </th>
+                    <th scope="col" class="desktop"> Expiration Date</th>
+                    <th scope="col" class="col-small"> Status </th>
+                    <th scope="col" class="col-small"> Renewal  </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var member in Model.MembershipRenewalList)
+                {
+                    <tr>
+                        <th class="col-small"> @member.MemberName </th>
+                        <td class="col-small">@member.MemberLastName </td>
+                        <td class="col-small">@member.MembershipId </td>
+                        <td class="col-small">@member.MembershipName </td>
+                        <td class="col-small">@member.MembershipDuration Months </td>
+                        <td class="col-small">    @member.MembershipExpirationDate      </td>
+
+
+                        @if( @member.MembershipExpirationDate < DateTime.Now)
+                        {
+                            <td class="col-small"> <span class="badge bg-danger"> Expired </span> </td>
+                        }
+                        else
+                        {
+                            <td class="col-small"> <span class="badge bg-success"> Active </span> </td>
+
+                        }
+
+
+                            <td class="col-small"> <a asp-action="Edit" asp-route-memberId="@member.MemberId" class="btn btn-outline-info"> Renew  </a> </td>
+                        
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+</div>
+
+

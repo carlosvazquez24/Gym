@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<GymManager.Core.MembershipsTypes.MembershipType>
+
+
+<div class="table-wrapper" >
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Duration (Months) </th>
+                <th scope="col">Created On</th>
+                <th scope="col"> Editar </th>
+                <th scope="col"> Eliminar </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var membership in Model)
+            {
+                <tr>
+                    <th> @membership.Name </th>
+                    <td>@membership.Cost </td>
+                    <td>@membership.Duration</td>
+                    <td> @membership.CreatedOn.ToString("dd-MM-yyyy") </td>
+                    <td> <a asp-action="Edit" asp-route-membershipId="@membership.Id" class="btn btn-outline-info"> Edit </a> </td>
+                    <td> <a asp-action="Delete" asp-route-membershipId="@membership.Id" class="btn btn-outline-danger"> Delete </a> </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+
+

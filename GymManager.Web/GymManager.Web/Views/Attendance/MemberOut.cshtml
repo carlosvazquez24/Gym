@@ -1,0 +1,33 @@
+﻿@model GymManager.Web.Models.AttendanceViewModel
+
+
+<thead>
+    <tr>
+        <th scope="col">ID </th>
+        <th scope="col">Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col" class="desktop"> Checkout </th>
+
+    </tr>
+</thead>
+<tbody>
+
+    @foreach (var member in Model.MembersInside)
+    {
+
+        <tr>
+            <th>   @member.Id     </th>
+            <th>   @member.Name     </th>
+            <td>   @member.LastName     </td>
+
+            <td>
+
+                <button type="button" class="btn btn-outline-info" onclick="checkout(this)" data-id="@member.Id">Check out</button>
+
+
+            </td>
+
+        </tr>
+    }
+
+</tbody>

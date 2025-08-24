@@ -1,0 +1,299 @@
+﻿
+@using GymManager.Web.Views.Shared.Components.AppMenu;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>@ViewBag.Title</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sticky-footer-navbar/">
+
+
+    <link href="~/fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/fontawesome/css/solid.css" rel="stylesheet" />
+    <link href="~/fontawesome/css/brands.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/Bootstrap/css/bootstrap.min.css" async />
+
+
+
+
+    <style>
+
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        /*To escape the character and differentiate it from server side code and css code, it uses double @@*/
+        @@media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        main > .container {
+            padding: 60px 15px 0;
+            background-size: cover; /* Ajusta la imagen para que cubra todo el fondo */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+
+        }
+
+        /* SWITCH DARK MODE */
+        #labelDarkMode {
+            width: 4.5rem;
+            height: 2rem;
+            position: relative;
+            display: block;
+            background: #ebebeb;
+            border-radius: 2rem;
+            box-shadow: inset 0px 5px 15px rgba(0,0,0,0.4), inset 0px -5px 15px rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #labelDarkMode:after {
+            content: "";
+            width: 1.9rem;
+            height: 1.8rem;
+            position: absolute;
+            top: 0.1rem;
+            left: 0.1rem;
+            background: linear-gradient(180deg,#ffcc89,#d8860b);
+            border-radius: 1.8rem;
+            box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        #darkmode-toggle {
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+        #darkmode-toggle:checked + #labelDarkMode {
+            background: #242424;
+        }
+
+        #darkmode-toggle:checked + #labelDarkMode:after {
+            left: 2.5rem;
+            transform: translateX(-1%);
+            background: linear-gradient(180deg,#777,#3a3a3a);
+        }
+
+        #labelDarkMode:active:after {
+            width: 2.6rem;
+        }
+
+
+
+        #darkmode-toggle:checked + #labelDarkMode + .background {
+            background: #242424;
+        }
+
+        #labelDarkMode  svg {
+            position: absolute;
+            width: 1.2rem;
+            top: 0.4rem;
+            z-index: 100;
+        }
+
+        #labelDarkMode svg.sun {
+            left: 0.4rem;
+            fill: #fff;
+            transition: 0.3s;
+        }
+
+        #labelDarkMode svg.moon {
+            left: 2.9rem;
+            fill: #7e7e7e;
+            transition: 0.3s;
+        }
+
+        #darkmode-toggle:checked + #labelDarkMode svg.sun {
+            fill: #ffff;
+        }
+
+        #darkmode-toggle:checked + #labelDarkMode svg.moon {
+            fill: #fff;
+        }
+
+        .hidden {
+          display: none; /*  */
+        }
+
+        .background-dark {
+            background-image: url('Images/Screenshot_130.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .select2-darkmode{
+            background-color: #333 !important;
+            color: #fff !important;
+        }
+
+
+    </style>
+
+    <link rel="stylesheet" href="~/Bootstrap/css/membersStyle.css" />
+
+    @RenderSection("Head", false);
+
+</head>
+<body class="hidden flex-column h-100" data-bs-theme="light" >
+
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md fixed-top" id="dropdownMenu">
+
+            <div class="container-fluid">
+
+                <a href="~/" >
+                    <img id="logo" class="imagenLogo" title="logo" src="~/Images/logo_sin_fondo.png" />
+                </a>
+
+                <a class="navbar-brand textoBarra" href="~/">Gym Manager</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    @await  Component.InvokeAsync(typeof(AppMenuViewComponent), new { CurrentPageName = ViewBag.CurrentPageName} )
+
+                    @await Html.PartialAsync("~/Views/Shared/_Name.cshtml")
+
+
+                    <input type="checkbox" id="darkmode-toggle" checked />
+                    <label id="labelDarkMode" for="darkmode-toggle" class="itemNavar">
+                        <svg version="1.1" class="sun" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 496 496" style="enable-background:new 0 0 496 496;" xml:space="preserve">
+
+                        <rect x="152.994" y="58.921" transform="matrix(0.3827 0.9239 -0.9239 0.3827 168.6176 -118.5145)" width="40.001" height="16" />
+                        <rect x="46.9" y="164.979" transform="matrix(0.9239 0.3827 -0.3827 0.9239 71.29 -12.4346)" width="40.001" height="16" />
+                        <rect x="46.947" y="315.048" transform="matrix(0.9239 -0.3827 0.3827 0.9239 -118.531 50.2116)" width="40.001" height="16" />
+
+                        <rect x="164.966" y="409.112" transform="matrix(-0.9238 -0.3828 0.3828 -0.9238 168.4872 891.7491)" width="16" height="39.999" />
+
+                        <rect x="303.031" y="421.036" transform="matrix(-0.3827 -0.9239 0.9239 -0.3827 50.2758 891.6655)" width="40.001" height="16" />
+
+                        <rect x="409.088" y="315.018" transform="matrix(-0.9239 -0.3827 0.3827 -0.9239 701.898 785.6559)" width="40.001" height="16" />
+
+                        <rect x="409.054" y="165.011" transform="matrix(-0.9239 0.3827 -0.3827 -0.9239 891.6585 168.6574)" width="40.001" height="16" />
+                        <rect x="315.001" y="46.895" transform="matrix(0.9238 0.3828 -0.3828 0.9238 50.212 -118.5529)" width="16" height="39.999" />
+                        <path d="M248,88c-88.224,0-160,71.776-160,160s71.776,160,160,160s160-71.776,160-160S336.224,88,248,88z M248,392
+				c-79.4,0-144-64.6-144-144s64.6-144,144-144s144,64.6,144,144S327.4,392,248,392z" />
+                        <rect x="240" width="16" height="72" />
+                        <rect x="62.097" y="90.096" transform="matrix(0.7071 0.7071 -0.7071 0.7071 98.0963 -40.6334)" width="71.999" height="16" />
+                        <rect y="240" width="72" height="16" />
+
+                        <rect x="90.091" y="361.915" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -113.9157 748.643)" width="16" height="71.999" />
+                        <rect x="240" y="424" width="16" height="72" />
+
+                        <rect x="361.881" y="389.915" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 397.8562 960.6281)" width="71.999" height="16" />
+                        <rect x="424" y="240" width="72" height="16" />
+                        <rect x="389.911" y="62.091" transform="matrix(0.7071 0.7071 -0.7071 0.7071 185.9067 -252.6357)" width="16" height="71.999" />
+</svg>
+                        <svg version="1.1" class="moon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 49.739 49.739" style="enable-background:new 0 0 49.739 49.739;" xml:space="preserve">
+                        <path d="M25.068,48.889c-9.173,0-18.017-5.06-22.396-13.804C-3.373,23.008,1.164,8.467,13.003,1.979l2.061-1.129l-0.615,2.268
+       c-1.479,5.459-0.899,11.25,1.633,16.306c2.75,5.493,7.476,9.587,13.305,11.526c5.831,1.939,12.065,1.492,17.559-1.258v0
+       c0.25-0.125,0.492-0.258,0.734-0.391l2.061-1.13l-0.585,2.252c-1.863,6.873-6.577,12.639-12.933,15.822
+       C32.639,48.039,28.825,48.888,25.068,48.889z M12.002,4.936c-9.413,6.428-12.756,18.837-7.54,29.253
+       c5.678,11.34,19.522,15.945,30.864,10.268c5.154-2.582,9.136-7.012,11.181-12.357c-5.632,2.427-11.882,2.702-17.752,0.748
+       c-6.337-2.108-11.473-6.557-14.463-12.528C11.899,15.541,11.11,10.16,12.002,4.936z" /></svg>
+                    </label>
+
+                    @RenderSection("HeaderRight", false)
+                </div>
+            </div>
+
+
+
+        </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+        <div class="container">
+
+               @RenderBody()
+        </div>
+    </main>
+
+
+
+    <footer class="footer mt-auto py-3">
+
+        <div class="container" >
+            <span class="text-muted"> Copyright @DateTime.Now.Year MNQOBI </span>
+        </div>
+    </footer>
+    @RenderSection("Scripts", false);
+
+    <script src="~/Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/darkmode.js"></script>
+
+
+</body>
+</html>
+
+

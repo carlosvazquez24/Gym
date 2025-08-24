@@ -1,0 +1,10 @@
+# Visual Studio / .NET Core
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dbmdl
+*.log
+*.pdb

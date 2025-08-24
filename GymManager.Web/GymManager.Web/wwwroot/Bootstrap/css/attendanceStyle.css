@@ -1,0 +1,46 @@
+﻿a,button {
+    text-decoration: none; /* Quita el subrayado */
+    border: none;
+}
+
+.container-group-buttons{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* ----- LIGHT  -------- */
+.check-buttons-light {
+    background-color: #E8E8E8;
+    color: black;
+    border-radius: 10px;
+    padding: 7px 7px;
+}
+
+.check-buttons-light:hover {
+    background-color: #D1D1D1;
+}
+
+.check-buttons-light.active {
+    background-color: #353535;
+    color: white;
+}
+
+
+/*  ------ DARK -------- */
+
+.check-buttons-dark {
+    background-color: #353535;
+    color: white;
+    border-radius: 10px;
+    padding: 7px 7px;
+}
+
+.check-buttons-dark:hover {
+    background-color: #464646;
+}
+
+.check-buttons-dark.active {
+    background-color: white;
+    color: black;
+}

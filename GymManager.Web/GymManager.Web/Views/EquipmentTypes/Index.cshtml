@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Head {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.theme.min.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+
+
+}
+
+@model GymManager.Web.Models.EquipmentListModel;
+
+<div>
+    <h1> Equipment Types </h1>
+</div>
+
+
+<div class="col-12">
+    <a asp-action="Create" class="btn btn-outline-success float-end">Create </a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col"> Editar </th>
+            <th scope="col"> Eliminar </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var equipment in Model.EquipmentTypes)
+        {
+                <tr>
+                    <th> @equipment.Name </th>
+                    <td>@equipment.Amount </td>
+                    <td> <a asp-action="Edit" asp-route-equipmentId="@equipment.Id" class="btn btn-outline-info"> Edit </a> </td>
+                    <td> <a asp-action="Delete" asp-route-equipmentId="@equipment.Id" class="btn btn-outline-danger"> Delete </a> </td>
+                </tr>
+        }
+
+    </tbody>
+</table>

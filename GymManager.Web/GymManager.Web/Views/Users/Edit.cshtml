@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model GymManager.Web.Models.UserViewModel;
+
+@section Head {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/jquery-ui.theme.min.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+
+    <script src="~/Views/Users/Create.js"></script>
+}
+
+<div class="container">
+
+
+    <form asp-action="Edit">
+
+
+        <div class="row">
+            <div class="col-4 mt-2">
+                <h5>Edit User</h5>
+
+            </div>
+
+            <div class="col-8 ">
+                <a asp-action="Index" class="btn btn-outline-info float-end mt-2">  Back </a>
+
+            </div>
+
+        </div>
+
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="UserName" class="form-label">User Name </label>
+            <input type="email" class="form-control" asp-for="UserName" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PhoneNumber" class="form-label">Phone Number </label>
+            <input type="text" class="form-control" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-danger">  </span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Change Password </label>
+            <input type="password" class="form-control" asp-for="Password" />
+            <span asp-validation-for="Password" class="text-danger">  </span>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary mb-3">
+            Submit
+        </button>
+
+
+    </form>
+
+
+</div>

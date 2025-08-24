@@ -1,0 +1,128 @@
+﻿
+.imagenLogo{
+    width: 50px;
+}
+
+
+
+.textoBarra{
+    margin-left: 20px;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+
+    .desktop {
+        display: none;
+    }
+
+
+    .mobile {
+        display: table-cell;
+    }
+
+}
+
+@media (min-width: 769px) {
+
+
+    .desktop {
+        display: table-cell;
+    }
+
+    .itemNavar {
+        margin: 0px 17px;
+    }
+
+    .mobile {
+        display: none;
+    }
+}
+
+
+
+.icons {
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    margin: 11px;
+}
+
+.infoIcon {
+    width: 21px;
+}
+
+.infoContainer{
+    padding: 5px;
+}
+
+.infoContainer span{
+    padding: 10px;
+}
+
+
+/* Estilo básico para el botón de dropdown */
+.dropdown-btn {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    padding: 10px; /* Ajusta según sea necesario */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo del icono (ajusta según sea necesario) */
+.iconMoon {
+    margin-right: 5px; /* Espaciado entre el icono y la flecha */
+}
+
+/* Estilo de la flecha */
+.arrow {
+    font-size: 14px; /* Tamaño de la flecha, ajusta según sea necesario */
+}
+
+/* Estilo cuando se pasa el ratón sobre el botón (opcional) */
+.dropdown-btn:hover {
+    /* Puedes agregar estilos adicionales para el estado hover si lo deseas */
+}
+
+
+.browser {
+    display: block;
+    width: 400px;
+    height: auto;
+}
+
+.content{
+    display: flex;
+}
+
+.count {
+    display: inline-block;
+    margin-bottom: 40px;
+    font-size: x-large;
+}
+
+
+.containerTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+/* SELECT2 JQUERY DARKMODE */
+
+
+
+
+
+
+
+
+
+
+
+

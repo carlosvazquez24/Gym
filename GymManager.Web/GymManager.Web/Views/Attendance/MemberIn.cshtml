@@ -1,0 +1,55 @@
+﻿
+@model GymManager.Web.Models.AttendanceViewModel
+
+<thead>
+    <tr>
+        <th scope="col">ID </th>
+        <th scope="col">Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col"> Expiration Date </th>
+
+        <th scope="col"> Status </th>
+
+
+        <th scope="col" class="desktop"> Rceord Entry </th>
+
+    </tr>
+</thead>
+<tbody>
+
+    @foreach (var member in Model.MembersOutside)
+    {
+
+        <tr>
+            <th>   @member.Id     </th>
+            <th>   @member.Name     </th>
+            <td>   @member.LastName     </td>
+
+            <td>   @member.MembershipExpirationDate    </td>
+
+            @if (@member.MembershipExpirationDate < DateTime.Now)
+            {
+                <td class="col-small"> <span class="badge bg-danger"> Expired </span> </td>
+            }
+            else
+            {
+                <td class="col-small"> <span class="badge bg-success"> Active </span> </td>
+
+            }
+
+
+            <td>
+
+                <button type="button" class="btn btn-outline-info" onclick="checkin(this)" data-expiration-date="@member.MembershipExpirationDate.ToString("yyyy-MM-dd")" data-id="@member.Id">Check in</button>
+
+
+            </td>
+
+        </tr>
+    }
+
+
+</tbody>
+
+
+

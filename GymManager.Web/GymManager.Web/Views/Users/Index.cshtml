@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section HeaderRight{
+    <form class="d-flex " role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+}
+
+@section Head{
+    <style>
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: none;
+        }
+    </style>
+}
+
+@model List<Microsoft.AspNetCore.Identity.IdentityUser>
+
+<div class="container">
+    <h1> Users</h1>
+    <div class="row">
+        <div class="col-12">
+            <a asp-action="Create" class="btn btn-outline-success float-end"> Add User </a>
+        </div>
+    </div>
+
+    <div class="table-wrapper" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"> Editar </th>
+                    <th scope="col"> Eliminar </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <th> @user.UserName </th>
+                        <td>@user.PhoneNumber </td>
+                        <td> @user.Email </td>
+
+                        <td> <a asp-action="Edit" asp-route-userId="@user.Id" class="btn btn-outline-info"> Edit </a> </td>
+                        <td> <a asp-action="Delete" asp-route-userId="@user.Id" class="btn btn-outline-danger"> Delete </a> </td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+</div>

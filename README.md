@@ -120,10 +120,10 @@ password: Tacos123*
 ![Texto alternativo](images/Screenshot_183.png) 
 
 
-##📜 License
+## 📜 License
 This project is under MIT License
 Free to use, modify and distribute
 
-##👨‍💻 Autor
+## 👨‍💻 Autor
 Carlos Vázquez
 Email: carloseliamvazquez@gmail.com

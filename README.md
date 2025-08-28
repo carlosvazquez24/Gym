@@ -36,7 +36,7 @@ Allows managing members, memberships, access and more
 ![imagen](images/Screenshot_199.png) 
 
 - But when a user with an ACTIVE membership try to check in... the systems will register the attendance 
-![imagen](images/Screenshot_199.png) 
+![imagen](images/Screenshot_200.png) 
 
 
 ### Reports (Prototype)

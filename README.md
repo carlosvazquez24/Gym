@@ -19,11 +19,7 @@ Allow to manager members, memberships, access and more
 ![Texto alternativo](images/Screenshot_187.png) 
 
 
-### Mmeberships control (Active/Expired)
-
-- Membership Types List
-![Texto alternativo](images/Screenshot_188.png) 
-
+### Memberships control (Active/Expired)
 
 - Renew Membership
 ![Texto alternativo](images/Screenshot_189.png) 
@@ -32,8 +28,6 @@ Allow to manager members, memberships, access and more
 ![Texto alternativo](images/Screenshot_190.png) 
 
 ### Attendance management (Check in/Check Out)
-
-![Texto alternativo](images/Screenshot_190.png) 
 
 - When a User with a expired membership tried to check in...
 ![Texto alternativo](images/Screenshot_191.png) 
@@ -59,8 +53,12 @@ Allow to manager members, memberships, access and more
 
 
 ### Other CRUDS
-![Texto alternativo](images/Screenshot_198.png) 
 
+- Membership Types List
+![Texto alternativo](images/Screenshot_188.png)
+
+-Equipment Types
+![Texto alternativo](images/Screenshot_198.png) 
 
 ---
 
@@ -99,7 +97,7 @@ Allow to manager members, memberships, access and more
 ### Run the next Command:
 ![Texto alternativo](images/Screenshot_177.png) 
 
-### The database migration has been aplied successfully ! 
+### The database migration has been applied successfully !
 ![Texto alternativo](images/Screenshot_178.png) 
 
 ### Now you cant test the App. Click on the Play green button
@@ -108,6 +106,7 @@ Allow to manager members, memberships, access and more
 ### You will see the login page. 
 You can use the next credentials:
 username: carlosEliam@gmail.com (This is not my email, it's just a random email, it's not verified)
+<br>
 password: Tacos123*
 
 ![Texto alternativo](images/Screenshot_179.png) 

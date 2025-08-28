@@ -1,7 +1,7 @@
 # 🏋️‍♂️ Gym Manager
 
 This project is a **management system for public gyms**, developed in **MVC .NET Core** with **Entity Framework Core** and **MySQL**.  
-Allow to manager members, memberships, access and more
+Allows managing members, memberships, access and more
 
 ---
 
@@ -10,7 +10,7 @@ Allow to manager members, memberships, access and more
 ### Login
 ![imagen](images/Screenshot_179.png) 
 
-### Member register and managment
+### Member register and management
 
 - Create Member
 ![imagen](images/Screenshot_186.png) 
@@ -70,7 +70,7 @@ Allow to manager members, memberships, access and more
 
 ---
 
-## ⚙️ Tecnologhies used
+## ⚙️ Technologies used
 
 - [.NET 6/7](https://dotnet.microsoft.com/)
 - [Entity Framework Core](https://learn.microsoft.com/ef/core/)
@@ -79,19 +79,19 @@ Allow to manager members, memberships, access and more
 
 ---
 
-## 🚀 Instalation and execution
+## 🚀 Installation and execution
 
-### Create a database in your MYSQL local enviroment
+### Create a database in your MYSQL local environment
 
 ![imagen](images/Screenshot_174.png)
 
 
-### Clone the repsoitory, then, enter to GymManager.Web.sln file
+### Clone the repository, then, enter to GymManager.Web.sln file
 
 ![imagen](images/Screenshot_173.png)
 
 
-### In Visual Studio, go to GymManager.Web project and modifiy the string connection in the appsettings.json file, replacing your database name and MYSQL credentials
+### In Visual Studio, go to GymManager.Web project and modify the string connection in the appsettings.json file, replacing your database name and MYSQL credentials
 
 ![imagen](images/Screenshot_172.png)
 
@@ -108,7 +108,7 @@ Allow to manager members, memberships, access and more
 ### The database migration has been applied successfully !
 ![imagen](images/Screenshot_178.png) 
 
-### Now you cant test the App. Click on the Play green button
+### Now you can test the App. Click on the Play green button
 ![imagen](images/Screenshot_181.png)
 
 ### You will see the login page. 
@@ -130,11 +130,9 @@ password: Tacos123*
 
 
 ## 📜 License
-## 📜 License
 This project is under MIT License
 Free to use, modify and distribute
 
-## 👨‍💻 Autor
 ## 👨‍💻 Autor
 Carlos Vázquez
 Email: carloseliamvazquez@gmail.com

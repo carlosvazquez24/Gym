@@ -62,7 +62,7 @@
 
         <div class="mb-3">
             <label asp-for="MembershipId" class="form-label" style="display: block;">Membership</label>
-            <select class="form-control" id="membershipSelect" asp-for="MembershipId">
+            <select class="form-control" asp-for="MembershipId">
                 @foreach (var membership in Model.MembershipTypes)
                 {
                     <option value="@membership.Id" data-months="@membership.Duration">
@@ -74,9 +74,10 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="RenewalDate" class="form-label">Renewal Expiration Date</label>
-            <input type="datetime-local" class="form-control" id="renewalDate" asp-for="RenewalDate" />
-            <span asp-validation-for="RenewalDate" class="text-danger"></span>
+
+            <div class="form-control-plaintext"> New Expiration Date  </div>
+
+            <div id="renewalDateDisplay" class="form-control bg-dark text-white" asp-for="renewalDateDisplay">  </div>
         </div>
 
 

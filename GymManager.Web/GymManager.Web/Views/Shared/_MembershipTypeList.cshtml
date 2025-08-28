@@ -24,7 +24,7 @@
                     <th> @membership.Name </th>
                     <td>@membership.Cost </td>
                     <td>@membership.Duration</td>
-                    <td> @membership.CreatedOn.ToString("dd-MM-yyyy") </td>
+                    <td> @membership.CreatedOn </td>
                     <td> <a asp-action="Edit" asp-route-membershipId="@membership.Id" class="btn btn-outline-info"> Edit </a> </td>
                     <td> <a asp-action="Delete" asp-route-membershipId="@membership.Id" class="btn btn-outline-danger"> Delete </a> </td>
                 </tr>
@@ -35,4 +35,16 @@
 
 </div>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
 

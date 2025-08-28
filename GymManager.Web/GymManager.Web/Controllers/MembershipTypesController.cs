@@ -36,11 +36,23 @@ namespace GymManager.Web.Controllers
         }
 
 
-        public async Task <IActionResult> Delete(int membershipId)
+        public async Task<IActionResult> Delete(int membershipId)
         {
-            await _membershipAppService.DeleteMembershipTypeAsync(membershipId);
-            return RedirectToAction("Index");
+            try
+            {
+                 await _membershipAppService.DeleteMembershipTypeAsync(membershipId);
+
+                TempData["SuccessMessage"] = "Successful deletion";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                // aquí puedes loguear el error: _logger.LogError(ex, "Error en Delete");
+                TempData["ErrorMessage"] = "The membership is linked to an user. Delete the user first";
+                return RedirectToAction("Index");
+            }
         }
+
 
         [HttpPost]
         public async  Task<IActionResult> Create(MembershipType membership)

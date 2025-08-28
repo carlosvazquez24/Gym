@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManager.DataAccess.Migrations
 {
     [DbContext(typeof(GymManagerContext))]
-    [Migration("20230325033550_addColumnAmmountEquipment")]
-    partial class addColumnAmmountEquipment
+    [Migration("20250826062741_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,45 @@ namespace GymManager.DataAccess.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("GymManager.Core.Attendances.Attendance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MovementType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("Attendances");
+                });
+
+            modelBuilder.Entity("GymManager.Core.Cities.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
 
             modelBuilder.Entity("GymManager.Core.EquipmentTypes.EquipmentType", b =>
                 {
@@ -75,22 +114,6 @@ namespace GymManager.DataAccess.Migrations
                     b.ToTable("MeasureTypes");
                 });
 
-            modelBuilder.Entity("GymManager.Core.Members.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cities");
-                });
-
             modelBuilder.Entity("GymManager.Core.Members.Member", b =>
                 {
                     b.Property<int>("Id")
@@ -115,6 +138,9 @@ namespace GymManager.DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
+                    b.Property<DateTime>("MembershipExpirationDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int?>("MembershipTypeId")
                         .HasColumnType("int");
 
@@ -122,6 +148,9 @@ namespace GymManager.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -422,6 +451,17 @@ namespace GymManager.DataAccess.Migrations
                     b.HasDiscriminator().HasValue("User");
                 });
 
+            modelBuilder.Entity("GymManager.Core.Attendances.Attendance", b =>
+                {
+                    b.HasOne("GymManager.Core.Members.Member", "Member")
+                        .WithMany("Attendances")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
+                });
+
             modelBuilder.Entity("GymManager.Core.Inventories.Inventory", b =>
                 {
                     b.HasOne("GymManager.Core.ProductTypes.ProductType", "ProductType")
@@ -435,7 +475,7 @@ namespace GymManager.DataAccess.Migrations
 
             modelBuilder.Entity("GymManager.Core.Members.Member", b =>
                 {
-                    b.HasOne("GymManager.Core.Members.City", "City")
+                    b.HasOne("GymManager.Core.Cities.City", "City")
                         .WithMany("Members")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -529,14 +569,19 @@ namespace GymManager.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GymManager.Core.Cities.City", b =>
+                {
+                    b.Navigation("Members");
+                });
+
             modelBuilder.Entity("GymManager.Core.MeasureTypes.MeasureType", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("GymManager.Core.Members.City", b =>
+            modelBuilder.Entity("GymManager.Core.Members.Member", b =>
                 {
-                    b.Navigation("Members");
+                    b.Navigation("Attendances");
                 });
 
             modelBuilder.Entity("GymManager.Core.MembershipsTypes.MembershipType", b =>

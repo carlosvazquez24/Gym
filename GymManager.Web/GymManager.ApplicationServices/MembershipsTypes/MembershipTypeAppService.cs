@@ -1,4 +1,5 @@
-﻿using GymManager.Core.MembershipsTypes;
+﻿using GymManager.Core.Members;
+using GymManager.Core.MembershipsTypes;
 using GymManager.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,11 +16,13 @@ namespace GymManager.ApplicationServices.MembershipsTypes
 
 
         private readonly IRepository<int, MembershipType> _repository;
+        private readonly IRepository<int, Member> _memberRepository;
 
-        public MembershipTypeAppService(IRepository<int, MembershipType> repository)
+        public MembershipTypeAppService(IRepository<int, MembershipType> repository, IRepository<int, Member> memberRepository )
         {
 
             _repository = repository;
+            _memberRepository = memberRepository;
 
         }
 
@@ -32,6 +35,14 @@ namespace GymManager.ApplicationServices.MembershipsTypes
 
         public async Task DeleteMembershipTypeAsync(int membershipTypeId)
         {
+            var member = await _memberRepository.GetAllAsync()
+                .FirstOrDefaultAsync(m => m.MembershipType.Id == membershipTypeId);
+
+            if (member != null)
+            {
+                throw new InvalidOperationException("Cannot delete membership type because it is assigned to one or more members.");
+            }
+
             await _repository.DeleteAsync(membershipTypeId);
         }
 

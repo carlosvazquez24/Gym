@@ -115,6 +115,7 @@ Allow to manager members, memberships, access and more
 You can use the next credentials:
 username: carlosEliam@gmail.com (This is not my email, it's just a random email, it's not verified)
 <br>
+<br>
 password: Tacos123*
 
 ![imagen](images/Screenshot_179.png) 
@@ -129,9 +130,11 @@ password: Tacos123*
 
 
 ## 📜 License
+## 📜 License
 This project is under MIT License
 Free to use, modify and distribute
 
+## 👨‍💻 Autor
 ## 👨‍💻 Autor
 Carlos Vázquez
 Email: carloseliamvazquez@gmail.com
